@@ -1,4 +1,5 @@
 import { Sequelize } from "sequelize-typescript";
+import { Departamentos } from "../models/Departamentos";
 import { Funcionarios } from "../models/Funcionarios";
 
 const connection = new Sequelize({
@@ -8,6 +9,6 @@ const connection = new Sequelize({
     password: "Web@cad123",
     database: "banco",
     logging: false,
-    models: [Funcionarios],
+    models: [Funcionarios, Departamentos],
 });
 export default connection;

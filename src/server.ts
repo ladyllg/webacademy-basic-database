@@ -1,8 +1,9 @@
 import express from "express";
-import { funcionariosRouter } from "./routes/router";
+import { funcionariosRouter, departamentosRouter } from "./routes/router";
 
 const routes = [
-    funcionariosRouter
+    funcionariosRouter,
+    departamentosRouter
 ]
 
 export class Api {
