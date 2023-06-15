@@ -1,16 +1,14 @@
 import {
     Table, Model, Column, DataType, IsUUID, PrimaryKey,
-    AllowNull, IsEmail, Unique, ForeignKey, HasOne
+    AllowNull, IsEmail, Unique, ForeignKey, HasOne, HasMany
 } from "sequelize-typescript";
-
-import { Funcionarios } from
-    "./Funcionarios";
+import isEmail from "validator/lib/isEmail";
 
 @Table({
     timestamps: true,
 })
 
-export class Departamentos extends Model {
+export class Cliente extends Model {
     @IsUUID('all')
     @PrimaryKey
     @Column({
@@ -19,23 +17,19 @@ export class Departamentos extends Model {
     })
     id!: string;
     @AllowNull(false)
-    @Unique
     @Column({
         type: DataType.STRING,
     })
     name!: string;
-    @AllowNull(false)
+    @AllowNull(true)
     @Column({
         type: DataType.STRING,
     })
-    sigla!: string;
-    @ForeignKey(() => Funcionarios)
+    endereco!: string;
     @AllowNull(true)
+    @IsEmail
     @Column({
-        type: DataType.UUID,
+        type: DataType.STRING,
     })
-    gestorId!: string;
-    @HasOne(() => Funcionarios,
-        'gestorId')
-    gestor!: Funcionarios;
+    email!: string;
 }

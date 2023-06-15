@@ -1,14 +1,17 @@
 import { Sequelize } from "sequelize-typescript";
-import { Departamentos } from "../models/Departamentos";
-import { Funcionarios } from "../models/Funcionarios";
+import { Categoria } from "../models/Categoria";
+import { Produto } from "../models/Produto";
+import { Cliente } from "../models/Cliente"
+import { Venda } from "../models/Venda"
 
 const connection = new Sequelize({
     dialect: "mysql",
+    port: 3308,
     host: "localhost",
-    username: "webacademy",
-    password: "Web@cad123",
+    username: "ladylaura",
+    password: "d7f593",
     database: "banco",
     logging: false,
-    models: [Funcionarios, Departamentos],
+    models: [Produto, Categoria, Cliente, Venda],
 });
 export default connection;

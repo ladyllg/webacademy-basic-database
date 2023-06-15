@@ -1,11 +1,16 @@
 import {
     Table, Model, Column, DataType, IsUUID, PrimaryKey,
-    AllowNull, IsEmail, Unique
+    AllowNull, IsEmail, Unique, ForeignKey, BelongsTo
 } from "sequelize-typescript";
+
+import { Categoria } from "./Categoria";
+import { Venda } from "./Venda";
+
 @Table({
     timestamps: true,
 })
-export class Funcionarios extends Model {
+
+export class Produto extends Model {
     @IsUUID('all')
     @PrimaryKey
     @Column({
@@ -17,22 +22,24 @@ export class Funcionarios extends Model {
     @Column({
         type: DataType.STRING,
     })
-    name!: string;
+    descricao!: string;
     @AllowNull(false)
     @Column({
-        type: DataType.STRING,
+        type: DataType.FLOAT,
     })
-    fone!: string;
-    @AllowNull(false)
-    @Unique
-    @IsEmail
-    @Column({
-        type: DataType.STRING,
-    })
-    email!: string;
+    preco!: string;
     @AllowNull(false)
     @Column({
         type: DataType.INTEGER,
     })
-    idade!: number;
+    quantidade!: string;
+    @ForeignKey(() => Categoria)
+    @AllowNull(false)
+    @Column({
+        type: DataType.UUID,
+    })
+    id_categoria!: string;
+    @BelongsTo(() => Categoria)
+    categoria!: Categoria;
+
 }
