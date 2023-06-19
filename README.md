@@ -9,41 +9,41 @@ Neste projeto trabelhei com routes, modelagem de banco, migrações, middlewares
 > GET - /clientes  
 Retorna a lista de clientes salvos
 
-> GET - /clientes/id
-Retorna o cliente informando o id
+> GET - /clientes/id <br>
+ Retorna o cliente informando o id
 
-> POST - /clientes
+> POST - /clientes<br>
 Inserir um cliente, informando os dados "name" e "apelido"
 
-> PUT - /clientes/id
-Para editar um cliente
+> PUT - /clientes/id<br>
+ Para editar um cliente
 
-> DELETE - /clientes/id
+> DELETE - /clientes/id<br>
 Remove um cliente informado pelo id
 
-> GET - /categorias  
+> GET - /categorias  <br>
 Retorna a lista de categorias salvas
 
-> GET - /categorias/id
+> GET - /categorias/id<br>
 Retorna a categoria informando o id
 
-> POST - /categorias
+> POST - /categorias<br>
 Inserir um categorias, informando os dados "descricao"
 
-> PUT - /categorias/id
+> PUT - /categorias/id<br>
 Para editar uma categoria
 
-> DELETE - /categorias/id
+> DELETE - /categorias/id<br>
 Remove a categoria informado pelo id
 
-> GET - /produtos  
+> GET - /produtos  <br>
 Retorna a lista de produtos salvos
 
-> POST - /produtos
+> POST - /produtos<br>
 Para inserir um produto, informando os dados "descricao", "preco", "quantidade", "id_categoria"
 
-> PUT - /produtos/id
+> PUT - /produtos/id<br>
 Para editar informações de um produto
 
-> DELETE - /produtos/id
+> DELETE - /produtos/id<br>
 Remove o produto informado pelo id
