@@ -32,4 +32,8 @@ export class Cliente extends Model {
         type: DataType.STRING,
     })
     email!: string;
+    @Column({
+        type: DataType.STRING,
+    })
+    apelido!: string;
 }

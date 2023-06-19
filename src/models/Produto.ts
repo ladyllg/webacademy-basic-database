@@ -4,7 +4,6 @@ import {
 } from "sequelize-typescript";
 
 import { Categoria } from "./Categoria";
-import { Venda } from "./Venda";
 
 @Table({
     timestamps: true,
@@ -41,5 +40,9 @@ export class Produto extends Model {
     id_categoria!: string;
     @BelongsTo(() => Categoria)
     categoria!: Categoria;
-
+    @AllowNull(true)
+    @Column({
+        type: DataType.STRING,
+    })
+    codigo!: string;
 }

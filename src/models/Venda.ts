@@ -23,6 +23,11 @@ export class Venda extends Model {
     @Column({
         type: DataType.UUID,
     })
-    id_cliente!: string;
-    
+    id_cliente!: string;    
+    @ForeignKey(() => Produto)
+    @AllowNull(false)
+    @Column({
+        type: DataType.UUID,
+    })
+    id_produto!: string;
 }

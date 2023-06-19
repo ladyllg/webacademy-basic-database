@@ -8,6 +8,7 @@ import { Router } from "express";
 import { Request, Response } from "express";
 import { Projetos } from "../models/Projetos";
 import { Dependentes } from "../models/Dependentes";
+import { Venda } from "../models/Venda";
 
 const categoriaRouter: Router = Router()
 const produtosRouter: Router = Router()
@@ -25,19 +26,21 @@ categoriaRouter.get("/categorias", async (req: Request, res: Response): Promise<
     console.log()
     return res.status(200).json(categorias)
 });
-
 categoriaRouter.post("/categorias", async (req: Request, res: Response): Promise<Response> => {
     const categoria: Categoria = await Categoria.create({ ...req.body });
     return res.status(200).json(categoria)
 });
-
+categoriaRouter.get("/categorias/:id", async (req: Request, res: Response): Promise<Response> => {
+    const { id } = req.params;
+    const categoria: Categoria | null = await Categoria.findByPk(id);
+    return res.status(201).json(categoria);
+});
 categoriaRouter.put("/categorias/:id", async (req: Request, res: Response): Promise<Response> => {
     const { id } = req.params;
     await Categoria.update({ ...req.body }, { where: { id } });
     const updatedCategoria: Categoria | null = await Categoria.findByPk(id);
     return res.status(200).json(updatedCategoria);
 });
-
 categoriaRouter.delete("/categorias/:id", async (req: Request, res: Response): Promise<Response> => {
     const { id } = req.params;
     const deletedCategoria: Categoria | null = await Categoria.findByPk(id);
@@ -76,6 +79,11 @@ produtosRouter.delete("/produtos/:id", async (req: Request, res: Response): Prom
 clientesRouter.get("/clientes", async (req: Request, res: Response): Promise<Response> => {
     const clientes: Cliente[] = await Cliente.findAll()
     return res.status(200).json(clientes)
+});
+clientesRouter.get("/clientes/:id", async (req: Request, res: Response): Promise<Response> => {
+    const { id } = req.params;
+    const cliente: Cliente | null = await Cliente.findByPk(id);
+    return res.status(201).json(cliente);
 });
 
 clientesRouter.post("/clientes", async (req: Request, res: Response): Promise<Response> => {
@@ -150,7 +158,7 @@ departamentosRouter.get("/departamentos", async (req: Request, res: Response): P
 departamentosRouter.get("/departamentos/:id", async (req: Request, res: Response): Promise<Response> => {
     const { id } = req.params;
     const departamento: Departamentos | null = await Departamentos.findByPk(123, {
-        include: models.Funcionarios,
+        include: Funcionarios,
     });
     return res.status(201).json(departamento);
 });

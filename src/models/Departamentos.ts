@@ -34,7 +34,6 @@ export class Departamentos extends Model {
         type: DataType.UUID,
     })
     gestorId!: string;
-    @HasOne(() => Funcionarios,
-        'gestorId')
+    @HasOne(() => Funcionarios,'gestorId')
     gestor!: Funcionarios;
 }

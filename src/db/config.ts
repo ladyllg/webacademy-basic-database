@@ -12,11 +12,10 @@ const connection = new Sequelize({
     dialect: "mysql",
     port: 3308,
     host: "localhost",
-    username: "webacademy",
-    password: "Web@cad123",
+    username: "ladylaura",
+    password: "d7f593",
     database: "banco",
     logging: false,
-    models: [Produto, Categoria, Cliente, Venda, Funcionarios, Departamentos, Projetos, Dependentes],
 });
 
 export default connection;
