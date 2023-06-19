@@ -19,7 +19,6 @@ export class Categoria extends Model {
     })
     id!: string;
     @AllowNull(false)
-    @Unique
     @Column({
         type: DataType.STRING,
     })
