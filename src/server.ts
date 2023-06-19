@@ -1,7 +1,7 @@
 import 'reflect-metadata';
 
 import express from 'express';
-import { produtosRouter, categoriaRouter, clientesRouter } from "./routes/router";
+import { produtosRouter, categoriaRouter, clientesRouter, vendasRouter } from "./routes/router";
 import { api } from './api.info';
 import { migracoes, MigracaoDB } from './models/migracoes'
 import connection from './db/config';
@@ -19,7 +19,8 @@ const models = [VersaoDB, Categoria, Cliente, Produto, Venda];
 const routes = [
     produtosRouter,
     categoriaRouter,
-    clientesRouter
+    clientesRouter,
+    vendasRouter
 ]
 
 export class Api {

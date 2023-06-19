@@ -47,3 +47,12 @@ Para editar informações de um produto
 
 > DELETE - /produtos/id<br>
 Remove o produto informado pelo id
+
+> GET - /vendas  <br>
+Retorna a lista de vendas
+
+> POST - /vendas<br>
+Para registrar uma venda, informando os dados "id_cliente", "id_produto"
+
+> DELETE - /vendas/id<br>
+Remove o registro da venda informado pelo id

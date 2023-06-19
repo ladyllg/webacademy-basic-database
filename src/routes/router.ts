@@ -13,6 +13,7 @@ import { Venda } from "../models/Venda";
 const categoriaRouter: Router = Router()
 const produtosRouter: Router = Router()
 const clientesRouter: Router = Router()
+const vendasRouter: Router = Router()
 
 const funcionariosRouter: Router = Router()
 const departamentosRouter: Router = Router()
@@ -103,6 +104,23 @@ clientesRouter.delete("/clientes/:id", async (req: Request, res: Response): Prom
     const deletedCliente: Cliente | null = await Cliente.findByPk(id);
     await Cliente.destroy({ where: { id } });
     return res.status(200).json(deletedCliente);
+});
+
+// VENDAS
+vendasRouter.get("/vendas", async (req: Request, res: Response): Promise<Response> => {
+    const vendas: Venda[] = await Venda.findAll()
+    return res.status(200).json(vendas)
+});
+vendasRouter.post("/vendas", async (req: Request, res: Response): Promise<Response> => {
+    const venda: Venda = await Venda.create({ ...req.body });
+    return res.status(200).json(venda)
+});
+
+vendasRouter.delete("/vendas/:id", async (req: Request, res: Response): Promise<Response> => {
+    const { id } = req.params;
+    const deletedVenda: Venda | null = await Venda.findByPk(id);
+    await Cliente.destroy({ where: { id } });
+    return res.status(200).json(deletedVenda);
 });
 
 // FUNCIONARIOS
@@ -201,4 +219,4 @@ dependenteRouter.delete("/dependentes/:id", async (req: Request, res: Response):
     return res.status(200).json(deletedDependente);
 });
 
-export { funcionariosRouter, departamentosRouter, produtosRouter, categoriaRouter, clientesRouter, dependenteRouter }
+export { funcionariosRouter, departamentosRouter, produtosRouter, categoriaRouter, clientesRouter, dependenteRouter, vendasRouter }
